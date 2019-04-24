@@ -1,1 +1,3 @@
-"# Portfolio-SalesforceProjectPayment" 
+I created 2 custom Objects, one called Project__c which has a child object called Payment__c. Within the Payment__c object, users can enter the Payment amount, Title, and Contact associated with the Payment. In addition to this, I also created an Apex trigger to handle all Project Payments and increment the Total_Payments__c field within the Project__c object. I extracted the Trigger logic and put the logic within a Service class called ProjectPaymentService. Here I am handling delete, insert, and update DML events and updating the parent project with the total payment value. For the second portion of the project, I used a lightning component which is embedded within the Project__c flexi-page within Lightning. Within this view you can update, add, and delete payments.
+
+Use ANT for deployment
