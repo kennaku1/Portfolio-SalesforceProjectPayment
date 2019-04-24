@@ -1,0 +1,37 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" controller="ProjectPaymentController">
+    <aura:attribute name="UIResponse" type="Object" access="public"/>
+    <aura:attribute name="recordId" type="Id" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div class="slds-box" style="background-color: #F0FFFF;">
+        <div style="text-align: center; width: 100%; padding-bottom: 10px; padding-top: 10px; font-size: 25px;">
+            {!v.UIResponse.projectName} | ${!v.UIResponse.totalAmount} 
+        </div>
+        <div>
+            <lightning:button label="Create Payment" variant="brand" onclick="{!c.newPayment}"/>
+        </div>
+        <aura:iteration items="{!v.UIResponse.projectContacts}" var="payment">
+        <div style="background-color: #A9A9A9;">
+            <span style="float: left; padding-right: 10%; font-size: 16px;">Contact: {!payment.contactRecord.Name}</span>  <span style="float: left; padding-right: 10%; font-size: 16px;"># of Payments: {!payment.payments.length}</span>  <span style="float: left; padding-right: 10%; font-size: 16px;">Most Recent: <a data-sfid="{!payment.payments[0].Id}" onclick="{!c.navigateToPayment}">{!payment.payments[0].Name}</a> </span>
+        </div>
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped" style="padding-left: 10em;">
+                <thead style="font-style: bold;">
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!payment.payments}" var="paymentRecord">
+                        <tr>
+                            <td><a data-sfid="{!paymentRecord.Id}" onclick="{!c.navigateToPayment}">{!paymentRecord.Name}</a></td>
+                            <td><input id="{!paymentRecord.Id}" type="number" value="{!paymentRecord.Amount__c}" onchange="{!c.updatePayment}"/></td>
+                            <td>{!paymentRecord.CreatedDate}</td>
+                            <td><a data-sfid="{!paymentRecord.Id}" onclick="{!c.deletePayment}">Delete</a></td>
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+        </aura:iteration>
+    </div>
+</aura:component>

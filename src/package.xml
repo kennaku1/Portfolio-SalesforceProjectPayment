@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>ProjectPaymentController</members>
+        <members>ProjectPaymentControllerTest</members>
+        <members>ProjectPaymentService</members>
+        <members>ProjectPaymentServiceTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>ProjectPaymentProcess</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>ProjectPaymentContributionChart</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>Payment__c</members>
+        <members>Project__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Payment__c-Payment Layout</members>
+        <members>Project__c-Project Layout</members>
+        <name>Layout</name>
+    </types>
+    <version>36.0</version>
+</Package>
